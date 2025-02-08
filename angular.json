@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "simpleCRM": {
+    "simple-crm": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -54,7 +54,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -63,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "simpleCRM:build:production"
+              "buildTarget": "simple-crm:build:production"
             },
             "development": {
-              "buildTarget": "simpleCRM:build:development"
+              "buildTarget": "simple-crm:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "simpleCRM:build"
+            "buildTarget": "simple-crm:build"
           }
         },
         "test": {
@@ -96,6 +102,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "simple-crm:build:production",
+              "serveTarget": "simple-crm:serve:production"
+            },
+            "development": {
+              "buildTarget": "simple-crm:build:development",
+              "serveTarget": "simple-crm:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

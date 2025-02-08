@@ -1,0 +1,42 @@
+.dialog-input {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    &:not(:first-of-type) {
+      mat-form-field {
+        width: 66%;
+
+        &:not(:first-child) {
+          width: 33%;
+        }
+      }
+    }
+  }
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+
+  button {
+    min-width: 100px;
+    padding: 16px;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
