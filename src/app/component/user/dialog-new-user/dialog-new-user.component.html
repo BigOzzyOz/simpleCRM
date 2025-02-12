@@ -7,12 +7,12 @@
   <p>Key user details</p>
   <div>
     <mat-form-field appearance="outline">
-      <mat-label>First Name</mat-label>
-      <input [disabled]="loading" type="text" minlength="3" maxlength="40" matInput [(ngModel)]="user.firstName">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
       <mat-label>Last Name</mat-label>
       <input [disabled]="loading" type="text" minlength="3" maxlength="40" matInput [(ngModel)]="user.lastName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input [disabled]="loading" type="text" minlength="3" maxlength="40" matInput [(ngModel)]="user.firstName">
     </mat-form-field>
   </div>
   <mat-form-field appearance="outline">

@@ -62,6 +62,12 @@
   }
 
   .router-container {
-    padding: 16px 0 0 56px;
+    padding: 16px 56px;
+    height: calc(100dvh - 56px);
+
+    app-user {
+      height: 100%;
+      width: 100%;
+    }
   }
 }

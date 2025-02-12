@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UserInterface } from '../../../interfaces/user.interface';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { User } from '../../../models/user.class';
@@ -47,7 +46,6 @@ export class DialogNewUserComponent {
   saveUser(): void {
     this.loading = true;
     this.user.birthday = (this.user.birthday as Date).getTime();
-    console.log(this.user as UserInterface);
     this.storage.saveUser(this.user.toJSON()).then(() => this.dialogRef.close());
   }
 }
