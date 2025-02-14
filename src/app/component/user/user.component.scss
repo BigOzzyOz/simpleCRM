@@ -16,6 +16,14 @@
     overflow-y: auto;
     background-color: #424242;
   }
+
+  .user-row {
+    cursor: pointer;
+
+    &:hover {
+      background-color: #616161;
+    }
+  }
 }
 
 .loading-spinner {

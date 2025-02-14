@@ -16,11 +16,12 @@ import { FsStorageService } from '../../services/fs-storage.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIcon, MatButtonModule, MatTooltipModule, MatFormFieldModule, MatInputModule, FormsModule, MatDialogModule, MatTableModule, MatSortModule, MatPaginatorModule, MatProgressSpinnerModule],
+  imports: [MatIcon, MatButtonModule, MatTooltipModule, MatFormFieldModule, MatInputModule, FormsModule, MatDialogModule, MatTableModule, MatSortModule, MatPaginatorModule, MatProgressSpinnerModule, RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
@@ -91,4 +92,8 @@ export class UserComponent implements AfterViewInit, OnDestroy {
     return birthday ? new Date(birthday).toLocaleDateString() : '';
   }
 
+
+  editUser(user: UserInterface): void {
+    console.log(user);
+  }
 }

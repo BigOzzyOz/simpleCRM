@@ -29,7 +29,7 @@ export class FsStorageService implements OnDestroy {
       (querySnapshot) => {
         const users = querySnapshot.docs.map(doc => ({
           ...doc.data() as UserInterface,
-          id: doc.id // Add this if you need document IDs
+          id: doc.id
         }));
         this.usersSubject.next(users);
       },

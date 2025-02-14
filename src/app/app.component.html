@@ -1,6 +1,8 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
-    <div class="logo-container"></div>
+    <div class="logo-container">
+      <img src="assets/img/logo.png" alt="logo">
+    </div>
     <ul class="menu">
       <li routerLink="/dashboard" [ngClass]="{ 'router-link-active': isActive('/dashboard') }">
         <mat-icon>dashboard_2</mat-icon> Dashboard
