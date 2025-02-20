@@ -1,0 +1,89 @@
+.action-buttons {
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+
+  button {
+    color: #c2185b;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.headers-align .mat-expansion-panel-header-description {
+  justify-content: end;
+  align-items: center;
+}
+
+.headers-align .mat-mdc-form-field+.mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  width: calc(100% - 48px);
+  height: calc(100% - 16px);
+  display: flex;
+
+  .address,
+  .contact,
+  .user-data {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex: 1;
+  }
+
+  .user-data {
+    display: flex;
+    width: 100%;
+
+    .user,
+    h1 {
+      display: flex;
+      gap: 32px;
+      flex: 1;
+
+      .user-data-info,
+      .user-data-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          height: 24px;
+          margin: 4px 0;
+        }
+      }
+    }
+  }
+
+  .contact-info,
+  .contact-data,
+  .address-info,
+  .address-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    p {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 24px;
+      margin: 4px 0;
+
+      mat-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}

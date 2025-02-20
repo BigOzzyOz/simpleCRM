@@ -48,12 +48,12 @@ export class UserComponent implements AfterViewInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(users => {
         this.dataSource.data = users;
-        this.loadingSpinner = false;
+        this.loadingSpinner = users.length > 0 ? false : true;
         this.cdr.detectChanges();
       });
   }
 
-  // Simplify AfterViewInit
+
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -66,16 +66,12 @@ export class UserComponent implements AfterViewInit, OnDestroy {
   }
 
 
-  // Update dialog handler
   openDialogNewUser(): void {
     const dialogRef = this.dialog.open(DialogNewUserComponent, {
       data: this.newUser
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      // Reset new user object
-      this.newUser = new User();
-    });
+    dialogRef.afterClosed().subscribe(() => this.newUser = new User());
   }
 
 

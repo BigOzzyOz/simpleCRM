@@ -4,6 +4,7 @@ export class User {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
   birthday: number | Date | null;
   street: string;
   houseNumber: number | null;
@@ -14,6 +15,7 @@ export class User {
     this.firstName = obj ? obj.firstName : '';
     this.lastName = obj ? obj.lastName : '';
     this.email = obj ? obj.email : '';
+    this.phone = obj ? obj.phone : '';
     this.birthday = obj ? (obj.birthday as Date).getTime() : null;
     this.street = obj ? obj.street : '';
     this.houseNumber = obj ? obj.houseNumber : null;
@@ -26,6 +28,7 @@ export class User {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
+      phone: this.phone,
       birthday: this.birthday,
       street: this.street,
       houseNumber: this.houseNumber,

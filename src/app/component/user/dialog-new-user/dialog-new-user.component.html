@@ -19,6 +19,10 @@
     <mat-label>Email</mat-label>
     <input [disabled]="loading" type="email" min="5" matInput [(ngModel)]="user.email">
   </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Phone</mat-label>
+    <input [disabled]="loading" type="tel" min="5" matInput [(ngModel)]="user.phone">
+  </mat-form-field>
   <mat-form-field class="form-field" appearance="outline">
     <mat-label>Day of birth</mat-label>
     <input [disabled]="loading" matInput [matDatepicker]="datepicker" [(ngModel)]="user.birthday">

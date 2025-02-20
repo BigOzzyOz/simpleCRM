@@ -1,1 +1,83 @@
-<p>user-details works!</p>
+@if (selectedUser) {
+  <div class="action-buttons">
+    <button mat-button (click)="accordion().openAll()">Expand All</button>
+    <button mat-button (click)="accordion().closeAll()">Collapse All</button>
+  </div>
+  <mat-accordion class="headers-align" multi>
+    <mat-expansion-panel expanded>
+
+      <mat-expansion-panel-header>
+        <mat-panel-title> User data </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="user-data">
+        <h1>{{selectedUser.lastName + ', ' + selectedUser.firstName}}</h1>
+        <div class="user">
+          <div class="user-data-info">
+            <p>Age:</p>
+            <p>Day of birth:</p>
+          </div>
+          <div class="user-data-data">
+            <p>{{getAge(selectedUser.birthday) + ' years'}}</p>
+            <p>{{getDate(selectedUser.birthday)}}</p>
+          </div>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+
+      <mat-expansion-panel-header>
+        <mat-panel-title> Contact </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>connect_without_contact</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="address">
+        <div class="address-info">
+          <p>Street:</p>
+          <p>Zip/City:</p>
+        </div>
+        <div class="address-data">
+          <p>{{selectedUser.street + ', ' + selectedUser.houseNumber}}</p>
+          <p>{{selectedUser.zip + ', ' + selectedUser.city}}</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="contact-info">
+          <p><mat-icon (click)="sendMail(selectedUser.email)">email</mat-icon>Email:</p>
+          <p><mat-icon (click)="callPhone(selectedUser.phone)">phone</mat-icon>Phone:</p>
+        </div>
+        <div class="contact-data">
+          <p>{{selectedUser.email ? selectedUser.email : 'No email'}}</p>
+          <p>{{selectedUser.phone ? selectedUser.phone : 'No phone number'}}</p>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Notes & Tickets </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>format_list_bulleted</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <h1>ToDo</h1>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+}
+
+@if(loadingSpinner || !selectedUser) {
+  <section class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </section>
+}
