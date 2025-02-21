@@ -8,17 +8,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Subject, takeUntil } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialog } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { DialogEditUserAddressComponent } from '../dialog-edit-user-address/dialog-edit-user-address.component';
+import { DialogEditUserDataComponent } from '../dialog-edit-user-data/dialog-edit-user-data.component';
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [MatAccordion, MatExpansionModule, MatIconModule, MatButtonModule, MatProgressSpinnerModule],
+  imports: [MatAccordion, MatExpansionModule, MatIconModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss'
 })
 export class UserDetailsComponent implements OnDestroy, OnInit {
   route = inject(ActivatedRoute);
   storage = inject(FsStorageService);
+  dialog = inject(MatDialog);
   private cdr = inject(ChangeDetectorRef);
 
   accordion = viewChild.required(MatAccordion);
@@ -83,11 +88,26 @@ export class UserDetailsComponent implements OnDestroy, OnInit {
     }
   }
 
+
   getDate(birthday: number | Date | null): string {
     if (birthday) {
       return new Date(birthday).toLocaleDateString();
     } else {
       return '';
     }
+  }
+
+
+  openDialogEditUserAddress(user: UserInterface): void {
+    const dialogRef = this.dialog.open(DialogEditUserAddressComponent, {
+      data: user
+    });
+  }
+
+
+  openDialogEditUserDetails(user: UserInterface): void {
+    const dialogRef = this.dialog.open(DialogEditUserDataComponent, {
+      data: user
+    });
   }
 }

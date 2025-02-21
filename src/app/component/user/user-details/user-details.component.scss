@@ -87,3 +87,28 @@
     }
   }
 }
+
+.click-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+
+  mat-icon {
+    cursor: pointer;
+  }
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  mat-spinner {
+    width: 25%;
+    height: 25%;
+    aspect-ratio: 1;
+  }
+}

@@ -1,0 +1,33 @@
+@if(loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+<h1 mat-dialog-title>Edit User</h1>
+<div mat-dialog-content class="dialog-input">
+  <p>Key user details</p>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input [disabled]="loading" type="text" minlength="3" maxlength="40" matInput [(ngModel)]="user.lastName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input [disabled]="loading" type="text" minlength="3" maxlength="40" matInput [(ngModel)]="user.firstName">
+    </mat-form-field>
+  </div>
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label>Day of birth</mat-label>
+    <input [disabled]="loading" matInput [matDatepicker]="datepicker" [(ngModel)]="user.birthday">
+    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="primary" (click)="saveUser(userId)">Ok</button>
+</div>

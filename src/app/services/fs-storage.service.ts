@@ -1,5 +1,5 @@
 import { inject, Injectable, OnDestroy } from '@angular/core';
-import { addDoc, collection, Firestore, onSnapshot } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { UserInterface } from '../interfaces/user.interface';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,11 +11,9 @@ export class FsStorageService implements OnDestroy {
   firestore = inject(Firestore);
   private destroy$ = new Subject<void>();
 
-  // Add observable data stream
   private usersSubject = new BehaviorSubject<UserInterface[]>([]);
   users$ = this.usersSubject.asObservable();
 
-  // Store the unsubscribe function
   private unsubSnapshot!: () => void;
 
   constructor() {
@@ -23,7 +21,6 @@ export class FsStorageService implements OnDestroy {
   }
 
   private initUsersListener() {
-    // Convert snapshot to observable pattern
     this.unsubSnapshot = onSnapshot(
       collection(this.firestore, 'users'),
       (querySnapshot) => {
@@ -49,7 +46,17 @@ export class FsStorageService implements OnDestroy {
     }
   }
 
-  // Cleanup
+
+  async editUser(userId: string, updatedFields: Partial<UserInterface>) {
+    const docRef = doc(collection(this.firestore, 'users'), userId);
+    try {
+      await updateDoc(docRef, updatedFields);
+    } catch (error) {
+      console.error('Error editing user:', error);
+      throw error;
+    }
+  }
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();

@@ -16,7 +16,7 @@ export class User {
     this.lastName = obj ? obj.lastName : '';
     this.email = obj ? obj.email : '';
     this.phone = obj ? obj.phone : '';
-    this.birthday = obj ? (obj.birthday as Date).getTime() : null;
+    this.birthday = obj ? typeof obj.birthday === 'number' ? new Date(obj.birthday) : (obj.birthday as Date).getTime() : null;
     this.street = obj ? obj.street : '';
     this.houseNumber = obj ? obj.houseNumber : null;
     this.city = obj ? obj.city : '';

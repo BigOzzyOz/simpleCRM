@@ -13,6 +13,24 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
+      <button mat-icon-button class="click-button hover-button" [matMenuTriggerFor]="detailsMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #detailsMenu="matMenu">
+        <button mat-menu-item (click)="openDialogEditUserDetails(selectedUser)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="sendMail(selectedUser.email)">
+          <mat-icon>email</mat-icon>
+          <span>Email</span>
+        </button>
+        <button mat-menu-item (click)="callPhone(selectedUser.phone)">
+          <mat-icon>phone</mat-icon>
+          <span>Phone</span>
+        </button>
+      </mat-menu>
+
       <div class="user-data">
         <h1>{{selectedUser.lastName + ', ' + selectedUser.firstName}}</h1>
         <div class="user">
@@ -38,6 +56,24 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
+      <button mat-icon-button class="click-button hover-button" [matMenuTriggerFor]="addressMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #addressMenu="matMenu">
+        <button mat-menu-item (click)="openDialogEditUserAddress(selectedUser)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="sendMail(selectedUser.email)">
+          <mat-icon>email</mat-icon>
+          <span>Email</span>
+        </button>
+        <button mat-menu-item (click)="callPhone(selectedUser.phone)">
+          <mat-icon>phone</mat-icon>
+          <span>Phone</span>
+        </button>
+      </mat-menu>
+
       <div class="address">
         <div class="address-info">
           <p>Street:</p>
@@ -51,8 +87,18 @@
 
       <div class="contact">
         <div class="contact-info">
-          <p><mat-icon (click)="sendMail(selectedUser.email)">email</mat-icon>Email:</p>
-          <p><mat-icon (click)="callPhone(selectedUser.phone)">phone</mat-icon>Phone:</p>
+          <p>
+            <button mat-icon-button class="hover-button">
+              <mat-icon (click)="sendMail(selectedUser.email)">email</mat-icon>
+            </button>
+            <span>Email:</span>
+          </p>
+          <p>
+            <button mat-icon-button class="hover-button">
+              <mat-icon (click)="callPhone(selectedUser.phone)">phone</mat-icon>
+            </button>
+            <span>Phone:</span>
+          </p>
         </div>
         <div class="contact-data">
           <p>{{selectedUser.email ? selectedUser.email : 'No email'}}</p>
