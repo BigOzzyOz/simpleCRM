@@ -5,9 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideFirestore } from '@angular/fire/firestore';
-import { environment } from '../environments/environment.development';
 
 @Component({
   selector: 'app-root',
